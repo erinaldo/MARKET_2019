@@ -27,6 +27,8 @@ Module ModConexion
         'End Try
 
 
+
+
     End Sub
     Private Sub cargar_parametros_conexion()
         On Error GoTo Merror
