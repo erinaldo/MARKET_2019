@@ -1,0 +1,2 @@
+060303	Utilidad	C1Button_Rpte_Utilidad
+060304	Stock Valorizado	C1Button_Rpt_Stock_Valorizado

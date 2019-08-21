@@ -1,0 +1,1 @@
+0403	Detalle de Compras	C1Button_Compras_Pagos

@@ -1,0 +1,2 @@
+FE_COD_ESTABLECIMIENTO	char(4)	Checked
+FE_CATALOG_51	char(4)	Checked

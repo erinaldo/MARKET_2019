@@ -1,0 +1,2 @@
+DNI_CLIENTE	char(8)	Checked
+MAIL_CLIENTE	varchar(250)	Checked

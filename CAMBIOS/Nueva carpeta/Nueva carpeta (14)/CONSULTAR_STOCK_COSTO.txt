@@ -1,0 +1,20 @@
+USE [MARKET_CELESTE]
+GO
+/****** Object:  StoredProcedure [dbo].[CONSULTAR_STOCK_COSTO]    Script Date: 03/07/2019 10:13:01 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+
+ALTER PROCEDURE [dbo].[CONSULTAR_STOCK_COSTO]
+@FI CHAR(8)
+ AS
+SELECT  Kardex.codigo as Codigo, ARTICULOS.DESC_ART as Articulo,    SUM(CASE WHEN tipo_mov = 'Ingreso' THEN cant_kardex ELSE - 1 * cant_kardex END) AS Cant,
+isnull(stock_min,0) as StkMin,
+SUM(CASE WHEN tipo_mov = 'Ingreso' THEN cant_kardex*costo_kardex ELSE - 1 * cant_kardex*costo_kardex END) AS Total
+FROM         Kardex INNER JOIN
+                      ARTICULOS ON Kardex.codigo = ARTICULOS.COD_ART
+WHERE     (Kardex.FECHA_KARDEX <=@FI)
+GROUP BY Kardex.codigo, ARTICULOS.DESC_ART,isnull(stock_min,0)

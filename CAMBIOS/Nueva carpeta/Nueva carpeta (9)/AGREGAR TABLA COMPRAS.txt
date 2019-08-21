@@ -1,0 +1,2 @@
+NRO_PERCEP	varchar(15)	Checked
+PERCEP_COMPRA	float	Checked

@@ -1,0 +1,1 @@
+COD_SUNAT	char(8)	Checked

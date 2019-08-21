@@ -1,0 +1,77 @@
+USE [MARKET]
+GO
+
+/****** Object:  StoredProcedure [dbo].[BUSCAR_COMPRA]    Script Date: 08/09/2018 09:43:32 ******/
+SET ANSI_NULLS OFF
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+ALTER PROCEDURE [dbo].[CONSULTAR_COMPRAS_PAGOS]
+@FI CHAR(8),@FF CHAR(8),@COD_PROVED CHAR(20),@TIPO CHAR(1)
+ AS
+DECLARE @CADENA VARCHAR(MAX)
+/*
+SET @CADENA="SELECT Codigo,Proveedor,Nro,Fecha,Articulo,Cant,Pu,Total,Pago,Tipo from "+
+" ( "+
+"SELECT Detalle_Compras.cod_art AS Codigo, PROVEEDORES.DESC_PROVED AS Proveedor, COMPRAS.serie_COMPRA + '-' + COMPRAS.num_COMPRA AS Nro, "+
+" COMPRAS.fecha_COMPRA AS Fecha, ARTICULOS.DESC_ART AS Articulo, Detalle_Compras.cant_DC as Cant, "+
+" ROUND(CASE WHEN inc_compra = 0 THEN pu_dc * (1 + (convert(float,val_igv) / 100)) ELSE pu_dc END, 2) AS Pu, "+
+" round( Detalle_Compras.cant_DC * (CASE WHEN inc_compra = 0 THEN pu_dc * (1 + (convert(float,val_igv) / 100)) ELSE pu_dc END),2) AS Total, "+
+" 0.00 as Pago,'C' as Tipo "+
+" FROM COMPRAS INNER JOIN Detalle_Compras ON COMPRAS.ID_COMPRA = Detalle_Compras.ID_COMPRA INNER JOIN "+
+" PROVEEDORES ON COMPRAS.COD_PROVED = PROVEEDORES.COD_PROVED INNER JOIN "+
+" ARTICULOS ON Detalle_Compras.cod_art = ARTICULOS.COD_ART "+
+" WHERE (COMPRAS.STAT_COMPRA = 0) "+
+" AND COMPRAS.fecha_COMPRA BETWEEN '"+@FI+"' AND '"+@FF+"'"
+IF @TIPO='P' SET @CADENA=@CADENA+" and round(total_compra-pagos_compra,2)<>0 "
+IF @TIPO='C' SET @CADENA=@CADENA+" and round(total_compra-pagos_compra,2)=0 "
+SET @CADENA=@CADENA+" union all "+
+" SELECT PAGOC.COD_PAGO AS Codigo, PROVEEDORES.DESC_PROVED AS Proveedor, COMPRAS.serie_COMPRA + '-' + COMPRAS.num_COMPRA AS Nro,  "+
+" PAGOC.FECHA_PAGO AS Fecha, 'Pago : '+CONVERT(VARCHAR,PAGOC.COD_PAGO) AS Articulo, 0 AS Cant, 0 AS Pu,0 as Total, PAGOD.TOTAL_PAGOD as Pago,'P' as Tipo "+
+" FROM PAGOC INNER JOIN PAGOD ON PAGOC.COD_PAGO = PAGOD.COD_PAGO INNER JOIN "+
+" COMPRAS ON PAGOD.ID_COMPRA = COMPRAS.ID_COMPRA INNER JOIN PROVEEDORES ON COMPRAS.COD_PROVED = PROVEEDORES.COD_PROVED "+
+" WHERE (PAGOC.STAT_PAGO = 0) AND (PAGOD.TOTAL_PAGOD > 0) "+
+" AND COMPRAS.fecha_COMPRA BETWEEN '"+@FI+"' AND '"+@FF+"'"
+IF @TIPO='P' SET @CADENA=@CADENA+" and round(total_compra-pagos_compra,2)<>0 "
+IF @TIPO='C' SET @CADENA=@CADENA+" and round(total_compra-pagos_compra,2)=0 "
+SET @CADENA=@CADENA+" ) T "
+
+SET @CADENA=@CADENA+@CAD
+
+SET @CADENA=@CADENA+" ORDER BY Nro,tipo"
+*/
+
+SET @CADENA="SELECT Detalle_Compras.cod_art AS Codigo, PROVEEDORES.DESC_PROVED AS Proveedor, COMPRAS.serie_COMPRA + '-' + COMPRAS.num_COMPRA AS Nro, "+
+" COMPRAS.fecha_COMPRA AS Fecha, ARTICULOS.DESC_ART AS Articulo, Detalle_Compras.cant_DC as Cant, "+
+" ROUND(CASE WHEN inc_compra = 0 THEN pu_dc * (1 + (convert(float,val_igv) / 100)) ELSE pu_dc END, 2) AS Pu, "+
+" round( Detalle_Compras.cant_DC * (CASE WHEN inc_compra = 0 THEN pu_dc * (1 + (convert(float,val_igv) / 100)) ELSE pu_dc END),2) AS Total, "+
+" 0.00 as Pago,'C' as Tipo "+
+" FROM COMPRAS INNER JOIN Detalle_Compras ON COMPRAS.ID_COMPRA = Detalle_Compras.ID_COMPRA INNER JOIN "+
+" PROVEEDORES ON COMPRAS.COD_PROVED = PROVEEDORES.COD_PROVED INNER JOIN "+
+" ARTICULOS ON Detalle_Compras.cod_art = ARTICULOS.COD_ART "+
+" WHERE (COMPRAS.STAT_COMPRA = 0) "+
+" AND COMPRAS.fecha_COMPRA BETWEEN '"+@FI+"' AND '"+@FF+"'"
+IF @TIPO='P' SET @CADENA=@CADENA+" and round(total_compra-pagos_compra,2)<>0 "
+IF @TIPO='C' SET @CADENA=@CADENA+" and round(total_compra-pagos_compra,2)=0 "
+IF @COD_PROVED<>'' SET @CADENA=@CADENA+" and COMPRAS.COD_PROVED='"+@COD_PROVED+"'"
+SET @CADENA=@CADENA+" union all "+
+" SELECT PAGOC.COD_PAGO AS Codigo, PROVEEDORES.DESC_PROVED AS Proveedor, COMPRAS.serie_COMPRA + '-' + COMPRAS.num_COMPRA AS Nro,  "+
+" PAGOC.FECHA_PAGO AS Fecha, 'Pago : '+CONVERT(VARCHAR,PAGOC.COD_PAGO) AS Articulo, 0 AS Cant, 0 AS Pu,0 as Total, PAGOD.TOTAL_PAGOD as Pago,'P' as Tipo "+
+" FROM PAGOC INNER JOIN PAGOD ON PAGOC.COD_PAGO = PAGOD.COD_PAGO INNER JOIN "+
+" COMPRAS ON PAGOD.ID_COMPRA = COMPRAS.ID_COMPRA INNER JOIN PROVEEDORES ON COMPRAS.COD_PROVED = PROVEEDORES.COD_PROVED "+
+" WHERE (PAGOC.STAT_PAGO = 0) AND (PAGOD.TOTAL_PAGOD > 0) "+
+" AND COMPRAS.fecha_COMPRA BETWEEN '"+@FI+"' AND '"+@FF+"'"
+IF @TIPO='P' SET @CADENA=@CADENA+" and round(total_compra-pagos_compra,2)<>0 "
+IF @TIPO='C' SET @CADENA=@CADENA+" and round(total_compra-pagos_compra,2)=0 "
+IF @COD_PROVED<>'' SET @CADENA=@CADENA+" and COMPRAS.COD_PROVED='"+@COD_PROVED+"'"
+
+SET @CADENA=@CADENA+" ORDER BY Nro,tipo"
+
+PRINT @CADENA
+EXEC(@CADENA)
+
+GO
+
+

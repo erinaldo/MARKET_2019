@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Dts_Liquidaciones" targetNamespace="http://tempuri.org/Dts_Liquidaciones.xsd" xmlns:mstns="http://tempuri.org/Dts_Liquidaciones.xsd" xmlns="http://tempuri.org/Dts_Liquidaciones.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Dts_Liquidaciones" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Dts_Liquidaciones" msprop:Generator_UserDSName="Dts_Liquidaciones">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable_Liq" msprop:Generator_TableClassName="DataTable_LiqDataTable" msprop:Generator_TableVarName="tableDataTable_Liq" msprop:Generator_RowChangedName="DataTable_LiqRowChanged" msprop:Generator_TablePropName="DataTable_Liq" msprop:Generator_RowDeletingName="DataTable_LiqRowDeleting" msprop:Generator_RowChangingName="DataTable_LiqRowChanging" msprop:Generator_RowEvHandlerName="DataTable_LiqRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable_LiqRowDeleted" msprop:Generator_RowClassName="DataTable_LiqRow" msprop:Generator_UserTableName="DataTable_Liq" msprop:Generator_RowEvArgName="DataTable_LiqRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Proceso" msprop:Generator_ColumnVarNameInTable="columnProceso" msprop:Generator_ColumnPropNameInRow="Proceso" msprop:Generator_ColumnPropNameInTable="ProcesoColumn" msprop:Generator_UserColumnName="Proceso" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario" type="xs:string" minOccurs="0" />
+              <xs:element name="Turno" msprop:Generator_ColumnVarNameInTable="columnTurno" msprop:Generator_ColumnPropNameInRow="Turno" msprop:Generator_ColumnPropNameInTable="TurnoColumn" msprop:Generator_UserColumnName="Turno" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalVta" msprop:Generator_ColumnVarNameInTable="columnTotalVta" msprop:Generator_ColumnPropNameInRow="TotalVta" msprop:Generator_ColumnPropNameInTable="TotalVtaColumn" msprop:Generator_UserColumnName="TotalVta" type="xs:double" minOccurs="0" />
+              <xs:element name="Tarjeta" msprop:Generator_ColumnVarNameInTable="columnTarjeta" msprop:Generator_ColumnPropNameInRow="Tarjeta" msprop:Generator_ColumnPropNameInTable="TarjetaColumn" msprop:Generator_UserColumnName="Tarjeta" type="xs:double" minOccurs="0" />
+              <xs:element name="Depositos" msprop:Generator_ColumnVarNameInTable="columnDepositos" msprop:Generator_ColumnPropNameInRow="Depositos" msprop:Generator_ColumnPropNameInTable="DepositosColumn" msprop:Generator_UserColumnName="Depositos" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable_Gastos" msprop:Generator_TableClassName="DataTable_GastosDataTable" msprop:Generator_TableVarName="tableDataTable_Gastos" msprop:Generator_TablePropName="DataTable_Gastos" msprop:Generator_RowDeletingName="DataTable_GastosRowDeleting" msprop:Generator_RowChangingName="DataTable_GastosRowChanging" msprop:Generator_RowEvHandlerName="DataTable_GastosRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable_GastosRowDeleted" msprop:Generator_UserTableName="DataTable_Gastos" msprop:Generator_RowChangedName="DataTable_GastosRowChanged" msprop:Generator_RowEvArgName="DataTable_GastosRowChangeEvent" msprop:Generator_RowClassName="DataTable_GastosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COD_MCAJA" msprop:Generator_ColumnVarNameInTable="columnCOD_MCAJA" msprop:Generator_ColumnPropNameInRow="COD_MCAJA" msprop:Generator_ColumnPropNameInTable="COD_MCAJAColumn" msprop:Generator_UserColumnName="COD_MCAJA" type="xs:double" minOccurs="0" />
+              <xs:element name="DESC_PLANCTAD" msprop:Generator_ColumnVarNameInTable="columnDESC_PLANCTAD" msprop:Generator_ColumnPropNameInRow="DESC_PLANCTAD" msprop:Generator_ColumnPropNameInTable="DESC_PLANCTADColumn" msprop:Generator_UserColumnName="DESC_PLANCTAD" type="xs:string" minOccurs="0" />
+              <xs:element name="MONTO_MCAJA" msprop:Generator_ColumnVarNameInTable="columnMONTO_MCAJA" msprop:Generator_ColumnPropNameInRow="MONTO_MCAJA" msprop:Generator_ColumnPropNameInTable="MONTO_MCAJAColumn" msprop:Generator_UserColumnName="MONTO_MCAJA" type="xs:double" minOccurs="0" />
+              <xs:element name="OBSERV_MCAJA" msprop:Generator_ColumnVarNameInTable="columnOBSERV_MCAJA" msprop:Generator_ColumnPropNameInRow="OBSERV_MCAJA" msprop:Generator_ColumnPropNameInTable="OBSERV_MCAJAColumn" msprop:Generator_UserColumnName="OBSERV_MCAJA" type="xs:string" minOccurs="0" />
+              <xs:element name="MON_MCAJA" msprop:Generator_ColumnVarNameInTable="columnMON_MCAJA" msprop:Generator_ColumnPropNameInRow="MON_MCAJA" msprop:Generator_ColumnPropNameInTable="MON_MCAJAColumn" msprop:Generator_UserColumnName="MON_MCAJA" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHA_MCAJA" msprop:Generator_ColumnVarNameInTable="columnFECHA_MCAJA" msprop:Generator_ColumnPropNameInRow="FECHA_MCAJA" msprop:Generator_ColumnPropNameInTable="FECHA_MCAJAColumn" msprop:Generator_UserColumnName="FECHA_MCAJA" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

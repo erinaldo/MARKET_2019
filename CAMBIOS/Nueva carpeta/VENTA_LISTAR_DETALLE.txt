@@ -1,0 +1,30 @@
+USE [MARKET]
+GO
+/****** Object:  StoredProcedure [dbo].[VENTA_LISTAR_DETALLE]    Script Date: 03/10/2018 20:25:29 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[VENTA_LISTAR_DETALLE]
+@CORR FLOAT
+ AS
+
+--
+DELETE FROM DETALLETMP WHERE CORR_TMP=@CORR AND CANT_TMP=0
+--
+SELECT     TOP 100 PERCENT ID_TMP,dbo.DETALLETMP.COD_ART AS Codigo, dbo.ARTICULOS.DESC_ART AS Descripcion, dbo.MEDIDA.DESC_MEDIDA AS Medida, 
+                      dbo.DETALLETMP.CANT_TMP AS Cantidad, dbo.DETALLETMP.PU_TMP AS Pu, 
+                      dbo.DETALLETMP.PU_TMP * dbo.DETALLETMP.CANT_TMP AS Total,
+                       DSCTO_PORC AS 'Dscto %', 
+                      (dbo.DETALLETMP.PU_TMP * dbo.DETALLETMP.CANT_TMP*ISNULL(DSCTO_PORC,0)/100)
+                       AS 'Dscto #',
+                      
+                      dbo.DETALLETMP.PU_TMP * dbo.DETALLETMP.CANT_TMP-
+		(dbo.DETALLETMP.PU_TMP * dbo.DETALLETMP.CANT_TMP*ISNULL(DSCTO_PORC,0)/100)-
+		(ISNULL(DSCTO_MONTO,0)) AS TotalFin
+	
+FROM         dbo.DETALLETMP INNER JOIN
+                      dbo.ARTICULOS ON dbo.DETALLETMP.COD_ART = dbo.ARTICULOS.COD_ART INNER JOIN
+                      dbo.MEDIDA ON dbo.ARTICULOS.COD_MEDIDA = dbo.MEDIDA.COD_MEDIDA
+	WHERE CORR_TMP=@CORR
+ORDER BY dbo.DETALLETMP.ID_TMP

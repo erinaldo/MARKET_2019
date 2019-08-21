@@ -1,0 +1,24 @@
+USE [MARKET_CELESTE]
+GO
+
+/****** Object:  StoredProcedure [dbo].[CONSULTAR_COMPRAS_PAGOS]    Script Date: 11/13/2018 21:35:46 ******/
+SET ANSI_NULLS OFF
+GO
+
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+
+create PROCEDURE [dbo].[CONSULTAR_STOCK_COSTO]
+@FI CHAR(8)
+ AS
+SELECT  Kardex.codigo as Codigo, ARTICULOS.DESC_ART as Articulo,    SUM(CASE WHEN tipo_mov = 'Ingreso' THEN cant_kardex ELSE - 1 * cant_kardex END) AS Cant,
+SUM(CASE WHEN tipo_mov = 'Ingreso' THEN cant_kardex*costo_kardex ELSE - 1 * cant_kardex*costo_kardex END) AS Total
+FROM         Kardex INNER JOIN
+                      ARTICULOS ON Kardex.codigo = ARTICULOS.COD_ART
+WHERE     (Kardex.FECHA_KARDEX <=@FI)
+GROUP BY Kardex.codigo, ARTICULOS.DESC_ART
+GO
+
+

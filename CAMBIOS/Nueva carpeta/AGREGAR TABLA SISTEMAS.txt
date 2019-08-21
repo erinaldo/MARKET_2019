@@ -1,0 +1,3 @@
+1004	Enviar Sunat	-
+0301	Ventas	Ventas
+0302	Consultar Ventas	Consultar_ventas

@@ -1,0 +1,16 @@
+FORMA_PAGO_CONTADO char(3)	Checked
+CONFIG_NOMB_EMPRESA	varchar(250)	Checked
+CONFIG_RUC_EMPRESA	varchar(11)	Checked
+CONFIG_DIR_EMPRESA	varchar(550)	Checked
+FE_RUTA_FIRMA_DIGITAL	varchar(350)	Checked
+FE_URI	varchar(50)	Checked
+FE_UBIGEO	varchar(50)	Checked
+FE_URBANIZACION	varchar(350)	Checked
+FE_DEPARTAMENTO	varchar(50)	Checked
+FE_PROVINCIA	varchar(50)	Checked
+FE_DISTRITO	varchar(50)	Checked
+FE_PSW_FIRMA_DIGITAL	varchar(50)	Checked
+FE_CARPETA_TMP	varchar(550)	Checked
+FE_WEB	varchar(50)	Checked
+FE_CARPETA_TXT	varchar(50)	Checked
+ACFGLIMITE_DNI	float	Checked

@@ -1,0 +1,2 @@
+COD_DOC_FACTURA	char(3)	Checked
+COD_DOC_BOLETA	char(3)	Checked
