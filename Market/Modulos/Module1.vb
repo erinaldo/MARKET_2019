@@ -8,6 +8,8 @@ Module Module1
     Public Const intELIMINAR = "E"
 
     ''Public Const DEFAULT_FPAGO = "006"
+
+
     Public Const SISTEMA_FELECTRONICA = "S"
     Public Const SISTEMA_MOVIMI_CAJA = "N"
 
