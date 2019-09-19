@@ -1,0 +1,47 @@
+
+/****** Object:  StoredProcedure [dbo].[usp_TMP_DETALLEDelProc]    Script Date: 09/04/2019 17:08:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+/****** Object:  Stored Procedure dbo.usp_TMP_DETALLEDelProc    Script Date: 29/06/2006 11:06:13 p.m. ******/
+CREATE	PROCEDURE  [dbo].[usp_TMP_DETALLEDelProc]
+(	 @CORRNBR 	INT	
+	,@ITEM	 	INT	
+	,@ing_proc001	INT OUTPUT
+)
+AS
+BEGIN TRANSACTION usp_TMP_DETALLEDelProc
+	
+	SET NOCOUNT ON
+	SET @ing_proc001=0
+	DELETE 
+	FROM TMP_DETALLE 
+	WHERE ITEM=@ITEM AND CORRNBR=@CORRNBR 	
+	
+
+		IF(@@ERROR!=0)
+		   BEGIN
+		     SET @ing_proc001=1
+		     RAISERROR 20000 'Error insertando en temporal'
+		     ROLLBACK TRANSACTION usp_tmp_detalleDelProc
+		     RETURN
+		    END
+
+	/*ACTUALIZAR ITEM'S  DE FACTURA*/
+	 UPDATE TMP_DETALLE  SET
+	        ITEM=ITEM-1  
+	 WHERE ITEM>@ITEM AND CORRNBR=@CORRNBR
+	 
+			IF(@@ERROR!=0)
+			BEGIN
+			  SET @ing_proc001=1
+			  RAISERROR 20000 'Error insertando en temporal'
+			  ROLLBACK TRANSACTION usp_tmp_detalleDelProc
+			  RETURN
+			END
+	
+COMMIT TRANSACTION usp_TMP_DETALLEDelProc
+RETURN
+
+

@@ -1,0 +1,39 @@
+
+/****** Object:  StoredProcedure [dbo].[ACTUALIZAR_TMP_DETALLE_COMPRA]    Script Date: 09/04/2019 17:06:13 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[ACTUALIZAR_TMP_DETALLE_COMPRA]
+@CORRNBR BIGINT,
+@ITEM INT,
+@ATMPPREC FLOAT,
+@ATMPCANT FLOAT,
+@SW INT OUTPUT
+
+ AS
+
+ BEGIN TRAN	
+	
+	SET @SW=0
+
+	UPDATE TMP_DETALLE SET 
+			ATMPPREC=@ATMPPREC,
+			ATMPCANT=@ATMPCANT
+			WHERE CORRNBR=@CORRNBR AND ITEM=@ITEM 
+	
+	 IF (@@ERROR!=0)
+	    BEGIN
+		RAISERROR 2000 'error actualizando datos'
+		ROLLBACK TRAN
+
+	        RETURN(1)
+
+	    END
+	
+    COMMIT TRAN

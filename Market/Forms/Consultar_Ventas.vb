@@ -752,18 +752,35 @@ Public Class Consultar_Ventas
             file.WriteLine("[MONTO PORC DESCUENTO]=" + "0")
 
             If OFILADET.Item("MONEDA") = "S" Then MON = "SOLES" Else MON = "DOLARES AMERICANOS"
-            file.WriteLine("[MONTO VTAS GRABADAS]=" + CStr(OFILADET.Item("AMO1BRUTO")))
-            file.WriteLine("[MONTO VTAS INAFECTAS]=" + "0")
-            file.WriteLine("[MONTO VTAS EXONERADAS]=" + "0")
-            file.WriteLine("[MONTO VTAS OPER GRATUITAS]=" + "0")
-            file.WriteLine("[MONTO VTAS SUBTOTAL]=" + CStr(OFILADET.Item("AMO1BRUTO")))
-            file.WriteLine("[MONTO VTAS PERCEPCIONES]=" + "0")
-            file.WriteLine("[MONTO VTAS RETENCIONES]=" + "0")
-            file.WriteLine("[MONTO VTAS DETRACCIONES]=" + "0")
-            file.WriteLine("[MONTO VTAS BONIFICACIONES]=" + "0")
-            file.WriteLine("[MONTO VTAS DESCUENTOS]=" + "0")
-            file.WriteLine("[MONTO VTAS FISE]=" + "0")
-            file.WriteLine("[MONTO LETRAS]=" + ImprimeTotalLetras(OFILADET.Item("AMO1TOFA"), MON))
+
+            If OFILADET.Item("GRATUITA_VENTA") = True Then
+                file.WriteLine("[MONTO VTAS GRABADAS]=" + "0")
+                file.WriteLine("[MONTO VTAS INAFECTAS]=" + "0")
+                file.WriteLine("[MONTO VTAS EXONERADAS]=" + "0")
+                file.WriteLine("[MONTO VTAS OPER GRATUITAS]=" + CStr(OFILADET.Item("MONTO_GRATUITO_VENTA")))
+                file.WriteLine("[MONTO VTAS SUBTOTAL]=" + "0")
+                file.WriteLine("[MONTO VTAS PERCEPCIONES]=" + "0")
+                file.WriteLine("[MONTO VTAS RETENCIONES]=" + "0")
+                file.WriteLine("[MONTO VTAS DETRACCIONES]=" + "0")
+                file.WriteLine("[MONTO VTAS BONIFICACIONES]=" + "0")
+                file.WriteLine("[MONTO VTAS DESCUENTOS]=" + "0")
+                file.WriteLine("[MONTO VTAS FISE]=" + "0")
+                file.WriteLine("[MONTO LETRAS]=" + ImprimeTotalLetras(OFILADET.Item("MONTO_GRATUITO_VENTA"), MON))
+            Else
+                file.WriteLine("[MONTO VTAS GRABADAS]=" + CStr(OFILADET.Item("AMO1BRUTO")))
+                file.WriteLine("[MONTO VTAS INAFECTAS]=" + "0")
+                file.WriteLine("[MONTO VTAS EXONERADAS]=" + "0")
+                file.WriteLine("[MONTO VTAS OPER GRATUITAS]=" + "0")
+                file.WriteLine("[MONTO VTAS SUBTOTAL]=" + CStr(OFILADET.Item("AMO1BRUTO")))
+                file.WriteLine("[MONTO VTAS PERCEPCIONES]=" + "0")
+                file.WriteLine("[MONTO VTAS RETENCIONES]=" + "0")
+                file.WriteLine("[MONTO VTAS DETRACCIONES]=" + "0")
+                file.WriteLine("[MONTO VTAS BONIFICACIONES]=" + "0")
+                file.WriteLine("[MONTO VTAS DESCUENTOS]=" + "0")
+                file.WriteLine("[MONTO VTAS FISE]=" + "0")
+                file.WriteLine("[MONTO LETRAS]=" + ImprimeTotalLetras(OFILADET.Item("AMO1TOFA"), MON))
+            End If
+
             file.WriteLine("[NRO DOC]=" + TDOC + Strings.Right(Trim(OFILADET.Item("NRO_FACTURA")), 12))
             file.WriteLine("[FECHA DOC]=" + Format(OFILADET.Item("FECHA"), "yyyy-MM-dd"))
             file.WriteLine("[MONEDA DOC]=" + OFILADET.Item("MONEDA"))
@@ -802,9 +819,16 @@ Public Class Consultar_Ventas
             file.WriteLine("[CAPACIDAD DEL CAMION]=" + "")
             file.WriteLine("[SCOP]=" + "")
             ''
-            file.WriteLine("[MONTO DEL IGV]=" + CStr(OFILADET.Item("AMO1IGV")))
-            file.WriteLine("[MONTO DEL ISC]=" + "0")
-            file.WriteLine("[TOTAL FACTURA]=" + CStr(OFILADET.Item("AMO1TOFA")))
+            If OFILADET.Item("GRATUITA_VENTA") = False Then
+                file.WriteLine("[MONTO DEL IGV]=" + CStr(OFILADET.Item("AMO1IGV")))
+                file.WriteLine("[MONTO DEL ISC]=" + "0")
+                file.WriteLine("[TOTAL FACTURA]=" + CStr(OFILADET.Item("AMO1TOFA")))
+            Else
+                file.WriteLine("[MONTO DEL IGV]=" + "0")
+                file.WriteLine("[MONTO DEL ISC]=" + "0")
+                file.WriteLine("[TOTAL FACTURA]=" + "0")
+            End If
+
             file.WriteLine("[PORCENTAJE IGV]=" + CStr(OFILADET.Item("VAL_IGV")))
             file.WriteLine("[EMAIL CLIENTE]=" + OFILADET.Item("MAIL"))
 
@@ -844,7 +868,11 @@ Public Class Consultar_Ventas
                 file.WriteLine("[PU ITEM INC IGV]=" + CStr(Math.Round(PU_INCIGV, 5)))
                 IGV_ITEM = OFILA.Item("AMO2STOT") * (OFILADET.Item("VAL_IGV") / 100)
                 file.WriteLine("[SUBTOTAL ITEM IGV]=" + CStr(Math.Round(IGV_ITEM, 2)))
-                file.WriteLine("[TIPO AFECTACION IGV TB07]=" + "10")
+                If OFILADET.Item("GRATUITA_VENTA") = False Then
+                    file.WriteLine("[TIPO AFECTACION IGV TB07]=" + "10")
+                Else
+                    file.WriteLine("[TIPO AFECTACION IGV TB07]=" + "12")
+                End If
 
                 file.WriteLine("[SUBTOTAL ITEM ISC]=" + "0")
                 file.WriteLine("[TIPO SISTEMA CALCULO ISC TB08]=" + "0")

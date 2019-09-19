@@ -136,4 +136,24 @@ TrataError:
         End Try
 
     End Function
+
+    Sub LISTAR_TMP_DETALLE(ByVal CORR As Double, ByVal FLEX As C1.Win.C1FlexGrid.C1FlexGrid, CAD_CON As String)
+        Try
+            Dim dt As New DataTable
+            Dim da As New SqlClient.SqlDataAdapter("LISTAR_TMP_DETALLE_MOV", CAD_CON)
+            da.SelectCommand.CommandType = CommandType.StoredProcedure
+            da.SelectCommand.Parameters.Add("@CORRNBR", SqlDbType.BigInt)
+            da.SelectCommand.Parameters("@CORRNBR").Value = CORR
+            da.Fill(dt)
+
+
+            FLEX.DataSource = dt
+            FLEX.AutoSizeCols()
+
+
+
+        Catch ex As Exception
+            MsgBox(Err.Description)
+        End Try
+    End Sub
 End Class

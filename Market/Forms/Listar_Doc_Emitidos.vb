@@ -38,6 +38,8 @@ Public Class Listar_Doc_Emitidos
                     TDOC = "B"
                 Case Me.OPT_FACTURAS.Checked
                     TDOC = "F"
+                Case Me.OPT_OTROS.Checked
+                    TDOC = "S"
                 Case Me.OPT_ORDENES.Checked
                     TDOC = "O"
                 Case Me.OPT_CAJA.Checked
@@ -105,6 +107,10 @@ Public Class Listar_Doc_Emitidos
                 .Item(.Rows.Count - 1, 2) = OFILA.Item("MINBOL").ToString
                 .Item(.Rows.Count - 1, 3) = OFILA.Item("MAXBOL").ToString
                 .AddItem("")
+                .Item(.Rows.Count - 1, 0) = "Tk.Otro :"
+                .Item(.Rows.Count - 1, 2) = OFILA.Item("MINOTRO").ToString
+                .Item(.Rows.Count - 1, 3) = OFILA.Item("MAXOTRO").ToString
+                .AddItem("")
                 DISEÑO_SERIE(C1_DOC, .Rows.Count - 1, .Rows.Count - 1, 0, 3)
                 .Rows(.Rows.Count - 1).Height = 10
                 .AddItem("")
@@ -120,6 +126,10 @@ Public Class Listar_Doc_Emitidos
                 .Item(.Rows.Count - 1, 2) = OFILA.Item("CANTBOL")
                 .Item(.Rows.Count - 1, 3) = GFormatodeNumero(OFILA.Item("TOTBOL"), 2)
                 .AddItem("")
+                .Item(.Rows.Count - 1, 0) = "Tk.Otro"
+                .Item(.Rows.Count - 1, 2) = OFILA.Item("CANTOTRO")
+                .Item(.Rows.Count - 1, 3) = GFormatodeNumero(OFILA.Item("TOTOTRO"), 2)
+                .AddItem("")
                 .Item(.Rows.Count - 1, 0) = "Tk.Fact Anul"
                 .Item(.Rows.Count - 1, 2) = OFILA.Item("ANULFACT")
                 .Item(.Rows.Count - 1, 3) = GFormatodeNumero(OFILA.Item("TOTANULFACT"), 2)
@@ -127,6 +137,10 @@ Public Class Listar_Doc_Emitidos
                 .Item(.Rows.Count - 1, 0) = "Tk.Bol Anul"
                 .Item(.Rows.Count - 1, 2) = OFILA.Item("ANULBOL")
                 .Item(.Rows.Count - 1, 3) = GFormatodeNumero(OFILA.Item("TOTANULBOL"), 2)
+                .AddItem("")
+                .Item(.Rows.Count - 1, 0) = "Tk.Otro Anul"
+                .Item(.Rows.Count - 1, 2) = OFILA.Item("ANULOTRO")
+                .Item(.Rows.Count - 1, 3) = GFormatodeNumero(OFILA.Item("TOTANULOTRO"), 2)
                 .AddItem("")
                 .Rows(.Rows.Count - 1).Height = 10
                 DISEÑO_SERIE(C1_DOC, .Rows.Count - 1, .Rows.Count - 1, 0, 3)
@@ -655,6 +669,10 @@ ACA:
     End Sub
 
     Private Sub OPT_ARTICULOS_CheckedChanged(sender As Object, e As EventArgs) Handles OPT_ARTICULOS.CheckedChanged
+        MOSTRAR()
+    End Sub
+
+    Private Sub OPT_OTROS_CheckedChanged(sender As Object, e As EventArgs) Handles OPT_OTROS.CheckedChanged
         MOSTRAR()
     End Sub
 End Class

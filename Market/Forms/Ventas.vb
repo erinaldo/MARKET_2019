@@ -455,7 +455,7 @@ Public Class Ventas
             ''
             C = OBJVENTAS.GRABAR_VENTA(Me.COMBO_DOC.SelectedValue, ArmaNumero(Me.TXT_NRODOC.Text), "S", Me.TXT_TC.Text, "C", Me.DT_DOC.Value,
                  Me.DT_PROC.Value, Me.TXT_TOTAL.Text, Me.TXT_VVENTA.Text, Me.TXT_IGV.Text, 0, 0, 0, NULO(Me.TXT_CODCLIE.Text, "S"),
-                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, "", "", "", 0, 0)
+                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, "", "", "", 0, 0, 0, 0)
 
             If C = 2 Then MsgBox("Esta fecha de proceso ya fue Cerrrada", MsgBoxStyle.Information) : Exit Sub
             If C = 3 Then MsgBox("Este documento ya existe", MsgBoxStyle.Information) : Exit Sub
@@ -479,7 +479,7 @@ Public Class Ventas
 
             C = OBJVENTAS.GRABAR_VENTA(Me.COMBO_DOC.SelectedValue, ArmaNumero(Me.TXT_NRODOC.Text), "S", Me.TXT_TC.Text, TIPO_PAGO, Me.DT_DOC.Value,
                  Me.DT_PROC.Value, Me.TXT_TOTAL.Text, Me.TXT_VVENTA.Text, Me.TXT_IGV.Text, VUELTO, SOLES, DOLARES, NULO(Me.TXT_CODCLIE.Text, "S"),
-                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, "", "", "", 0, 0)
+                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, "", "", "", 0, 0, 0, 0)
             GRABAR_EFECTIVO = C
             If C = 4 Then MsgBox("Si es Factura debe registrar el Ruc pro Mantenimiento de Clientes", MsgBoxStyle.Information) : Exit Function
             If C = 2 Then MsgBox("Esta fecha de proceso ya fue Cerrrada", MsgBoxStyle.Information) : Exit Function
@@ -496,7 +496,7 @@ Public Class Ventas
             Dim C As Integer
             C = OBJVENTAS.GRABAR_VENTA(Me.COMBO_DOC.SelectedValue, ArmaNumero(Me.TXT_NRODOC.Text), "S", Me.TXT_TC.Text, "T", Me.DT_DOC.Value,
                  Me.DT_PROC.Value, Me.TXT_TOTAL.Text, Me.TXT_VVENTA.Text, Me.TXT_IGV.Text, 0, 0, 0, NULO(Me.TXT_CODCLIE.Text, "S"),
-                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, COD_TARJETA, MONEDA, NUM_TARJETA, Me.TXT_TOTAL.Text, 0)
+                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, COD_TARJETA, MONEDA, NUM_TARJETA, Me.TXT_TOTAL.Text, 0, 0, 0)
             GRABAR_TARJETA = C
             If C = 4 Then MsgBox("Si es Factura debe registrar el Ruc pro Mantenimiento de Clientes", MsgBoxStyle.Information) : Exit Function
             If C = 2 Then MsgBox("Esta fecha de proceso ya fue Cerrrada", MsgBoxStyle.Information) : Exit Function

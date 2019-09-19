@@ -40,24 +40,24 @@ Module ModConexion
 
         ''CHANCAY
         ''\\Microserver\setup_market_electronico
-        'strServidor = "MICROSERVER\sqlexpress"
-        'strDataBase = "MARKET"
-        'strUID = "sistemas"
-        'strPWD = "sistemas"
+        ''strServidor = "MICROSERVER\sqlexpress"
+        ''strDataBase = "MARKET"
+        ''strUID = "sistemas"
+        ''strPWD = "sistemas"
 
         ''CELESTE LURIN
         ''\\Server\setup_market
-        ''strServidor = "SERVER\sqlexpress"
-        ''strDataBase = "MARKET"
-        ''strUID = "sa"
-        ''strPWD = "ccaj_172003"
+        'strServidor = "SERVER\sqlexpress"
+        'strDataBase = "MARKET"
+        'strUID = "sa"
+        'strPWD = "ccaj_172003"
 
         ''MARKET CHACLACAYO
         '''\\Servidor\setup_market_chaclacayo
-        ''strServidor = "SERVidor\sqlexpress"
-        ''strDataBase = "MARKET"
-        ''strUID = "sa"
-        ''strPWD = "ccaj_172003"
+        'strServidor = "SERVidor\sqlexpress"
+        'strDataBase = "MARKET"
+        'strUID = "sa"
+        'strPWD = "ccaj_172003"
 
         ''MARKET BAUTISTA
         '''\\MARKET\setup_market
@@ -81,12 +81,10 @@ Module ModConexion
         ''strUID = "sa"
         ''strPWD = "ccaj_172003"
 
-        strServidor = "italo-pc\sqlexpress"
-        strDataBase = "market_celeste"
-
-
-        strUID = "sa"
-        strPWD = "sa"
+        'strServidor = "italo-pc\sqlexpress"
+        'strDataBase = "SAN_DIEGO"
+        'strUID = "sa"
+        'strPWD = "sa"
 
         ''copacabana externo
         ''strServidor = "192.168.5.200\SQLEXPRESS"
@@ -117,10 +115,10 @@ Module ModConexion
 
         ''GRIFO SAN DIEGO
         '''\\servER\SETUP_MARKET
-        ''strServidor = "SERVER\SQLEXPRESS"
-        ''strDataBase = "MARKET"
-        ''strUID = "sa"
-        ''strPWD = "ccaj_172003"
+        strServidor = "SERVER\SQLEXPRESS"
+        strDataBase = "MARKET"
+        strUID = "sa"
+        strPWD = "ccaj_172003"
 
         ''SEVEN
         ''\\servER\SETUP_MARKET
@@ -145,8 +143,15 @@ Module ModConexion
 
 
         ''GRIFO QUILCA
-        ''\\CELESTEservER\SETUP_MARKET
-        ''strServidor = "CELESTESERVER\SQLEXPRESS"
+        '''\\CELESTEservER\SETUP_MARKET
+        'strServidor = "CELESTESERVER\SQLEXPRESS"
+        'strDataBase = "MARKET"
+        'strUID = "sa"
+        'strPWD = "ccaj_172003"
+
+        ''PETROGAS
+        ''\\server\setup_market
+        ''strServidor = "server\sqlexpress"
         ''strDataBase = "MARKET"
         ''strUID = "sa"
         ''strPWD = "ccaj_172003"

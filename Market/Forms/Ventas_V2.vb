@@ -190,6 +190,8 @@ Public Class Ventas_V2
         Me.Button_TARJETA.Enabled = True
         Me.Button_CREDITO.Enabled = True
         Me.Button_CAJA.Enabled = True
+        Me.CHK_GRATUITA.Checked = False
+        Me.LBL_GRATUITO.Text = "0"
         REIMPRIME = 0
         CARGAR_CONFIG()
     End Sub
@@ -205,10 +207,19 @@ Public Class Ventas_V2
             DSCTO = DSCTO + Me.C1_DETALLE.Item(F, COL_DSCTO_M)
         Next
         Me.TXT_CANT_TOTAL.Text = CANT
-        Me.TXT_DSCTO.Text = Format(DSCTO, "###,###,###.00")
-        Me.TXT_TOTAL.Text = Format(TOT, "###,###,###.00")
-        Me.TXT_SUBTOTAL.Text = Format(TOT / (1 + (IGV / 100)), "###,###,###.00")
-        Me.TXT_IGV.Text = Format(TOT - Val(Me.TXT_SUBTOTAL.Text), "###,###,###.00")
+        If Me.CHK_GRATUITA.Checked = True Then
+            Me.TXT_DSCTO.Text = Format(0, "###,###,###.00")
+            Me.TXT_TOTAL.Text = Format(0, "###,###,###.00")
+            Me.TXT_SUBTOTAL.Text = Format(0, "###,###,###.00")
+            Me.TXT_IGV.Text = Format(0, "###,###,###.00")
+            Me.LBL_GRATUITO.Text = Format(TOT, "###,###,###.00")
+        Else
+            Me.TXT_DSCTO.Text = Format(DSCTO, "###,###,###.00")
+            Me.TXT_TOTAL.Text = Format(TOT, "###,###,###.00")
+            Me.TXT_SUBTOTAL.Text = Format(TOT / (1 + (IGV / 100)), "###,###,###.00")
+            Me.TXT_IGV.Text = Format(TOT - Val(Me.TXT_SUBTOTAL.Text), "###,###,###.00")
+            Me.LBL_GRATUITO.Text = Format(0, "###,###,###.00")
+        End If
     End Sub
 
     Private Sub TXT_CANT_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TXT_CANT_TOTAL.LostFocus
@@ -370,6 +381,7 @@ Public Class Ventas_V2
 
 
     Private Sub Button_TARJETA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_TARJETA.Click
+        If Me.CHK_GRATUITA.Checked = True Then MsgBox("No puede pagar una Venta Gratuita", MsgBoxStyle.Information) : Exit Sub
         If Val(Me.TXT_TOTAL.Text) = 0 Then MsgBox("Ingrese Articulos", MsgBoxStyle.Information) : Exit Sub
         If Microsoft.VisualBasic.Left(Me.Combo_DOC.Text, 1) = "F" And Me.TXT_RUC_CLIENTE.Text = "" Then MsgBox("Ingresar Ruc para poder Facturar", MsgBoxStyle.Information) : Exit Sub
         With Pago_Tarjeta
@@ -383,7 +395,7 @@ Public Class Ventas_V2
         Try
             Dim C As Integer
             Dim TOT_S As Double
-
+            If Me.CHK_GRATUITA.Checked = True Then MsgBox("No puede dar Credito de una Venta Gratuita", MsgBoxStyle.Information) : Exit Sub
             If Microsoft.VisualBasic.Left(Me.Combo_DOC.Text, 1) = "F" And Me.TXT_RUC_CLIENTE.Text = "" Then MsgBox("Debe ingresar el numero de Ruc", MsgBoxStyle.Information) : Exit Sub
 
             If Val(Me.TXT_TOTAL.Text) = 0 Then MsgBox("Ingrese Articulos", MsgBoxStyle.Information) : Exit Sub
@@ -397,7 +409,7 @@ Public Class Ventas_V2
             ''
             C = OBJVENTAS.GRABAR_VENTA(Me.Combo_DOC.SelectedValue, ArmaNumero(Me.TXT_NRODOC.Text), "S", Me.TXT_TC.Text, "C", Me.DT_DOC.Value,
                  Me.DT_PROC.Value, Me.TXT_TOTAL.Text, Me.TXT_SUBTOTAL.Text, Me.TXT_IGV.Text, 0, 0, 0, NULO(Me.TXT_COD_CLIENTE.Text, "S"),
-                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, "", "", "", 0, Me.TXT_DSCTO.Text)
+                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, "", "", "", 0, Me.TXT_DSCTO.Text, 0, 0)
 
             If C = 2 Then MsgBox("Esta fecha de proceso ya fue Cerrrada", MsgBoxStyle.Information) : Exit Sub
             If C = 3 Then MsgBox("Este documento ya existe", MsgBoxStyle.Information) : Exit Sub
@@ -509,7 +521,7 @@ Public Class Ventas_V2
 
             C = OBJVENTAS.GRABAR_VENTA(Me.Combo_DOC.SelectedValue, ArmaNumero(Me.TXT_NRODOC.Text), CFG_MONVENTA, Me.TXT_TC.Text, TIPO_PAGO, Me.DT_DOC.Value,
                  Me.DT_PROC.Value, Me.TXT_TOTAL.Text, Me.TXT_SUBTOTAL.Text, Me.TXT_IGV.Text, VUELTO, SOLES, DOLARES, NULO(Me.TXT_COD_CLIENTE.Text, "S"),
-                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, "", "", "", 0, Me.TXT_DSCTO.Text)
+                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, "", "", "", 0, Me.TXT_DSCTO.Text, Me.CHK_GRATUITA.Checked, Me.LBL_GRATUITO.Text)
             GRABAR_EFECTIVO = C
             If C = 4 Then MsgBox("Si es Factura debe registrar el Ruc pro Mantenimiento de Clientes", MsgBoxStyle.Information) : Exit Function
             If C = 2 Then MsgBox("Esta fecha de proceso ya fue Cerrrada", MsgBoxStyle.Information) : Exit Function
@@ -523,6 +535,7 @@ Public Class Ventas_V2
 
     Function GRABAR_TARJETA(ByVal COD_TARJETA As String, ByVal MONEDA As String, ByVal NUM_TARJETA As String) As Integer
         Try
+
             Dim C As Integer
             Dim MONTO_TARJETA As Double = 0
             If CFG_MONVENTA = MONEDA Then
@@ -537,7 +550,7 @@ Public Class Ventas_V2
 
             C = OBJVENTAS.GRABAR_VENTA(Me.Combo_DOC.SelectedValue, ArmaNumero(Me.TXT_NRODOC.Text), "S", Me.TXT_TC.Text, "T", Me.DT_DOC.Value,
                  Me.DT_PROC.Value, Me.TXT_TOTAL.Text, Me.TXT_SUBTOTAL.Text, Me.TXT_IGV.Text, 0, 0, 0, NULO(Me.TXT_COD_CLIENTE.Text, "S"),
-                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, COD_TARJETA, MONEDA, NUM_TARJETA, MONTO_TARJETA, Me.TXT_DSCTO.Text)
+                  0, 0, GUSERID, SystemInformation.ComputerName, Me.TXT_TURNO.Text, CORR, COD_TARJETA, MONEDA, NUM_TARJETA, MONTO_TARJETA, Me.TXT_DSCTO.Text, 0, 0)
             GRABAR_TARJETA = C
             If C = 4 Then MsgBox("Si es Factura debe registrar el Ruc pro Mantenimiento de Clientes", MsgBoxStyle.Information) : Exit Function
             If C = 2 Then MsgBox("Esta fecha de proceso ya fue Cerrrada", MsgBoxStyle.Information) : Exit Function
@@ -680,6 +693,7 @@ Public Class Ventas_V2
 
     Private Sub Button_mULTIPAGO_Click(sender As Object, e As EventArgs) Handles Button_mULTIPAGO.Click
         If ValidarDatos() Then
+            If Me.CHK_GRATUITA.Checked = True Then MsgBox("No puede pagar una Venta Gratuita", MsgBoxStyle.Information) : Exit Sub
             With Pago_Efectivo
                 .TXT_TC.Text = Me.TXT_TC.Text
                 .LBL_MONTO.Text = Me.TXT_TOTAL.Text
@@ -895,5 +909,9 @@ Public Class Ventas_V2
         Else
             CARGAR_DETALLE()
         End If
+    End Sub
+
+    Private Sub CHK_GRATUITA_CheckedChanged(sender As Object, e As EventArgs) Handles CHK_GRATUITA.CheckedChanged
+        TOTAL()
     End Sub
 End Class

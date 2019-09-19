@@ -1,0 +1,7 @@
+1	Conexion internet
+2	Fallas Fluido electrico
+3	Desastres Naturales
+4	Robo
+5	Fallas en el sistema de facturacion
+6	 Venta Itinerante (Valido solo para los comprobantes 01,03, 07 y 08) 
+7	Otros

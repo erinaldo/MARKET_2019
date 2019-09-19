@@ -10,11 +10,11 @@ Module Module1
     ''Public Const DEFAULT_FPAGO = "006"
 
 
-    Public Const SISTEMA_FELECTRONICA = "S"
+    Public Const SISTEMA_FELECTRONICA = "N"
     Public Const SISTEMA_MOVIMI_CAJA = "N"
 
     ''ITALO ELECTRONICA MATRICIAL
-    Public Const SISTEMA_ITALO = "N"
+    Public Const SISTEMA_ITALO = "S"
 
     ''ASPNET
     Public Const SISTEMA_ASPNET = "N"
@@ -29,17 +29,20 @@ Module Module1
     'Public Const SISTEMA_ASPNET_RUTA_HASH = "D:\reail\out"
     'Public Const SISTEMA_ASPNET_RUTA = "D:\reail\out"
 
-
-
     Public CFG_DRESULT As Integer = 2
 
+
+
     Public CONFIG_VALIDAR_STOCK As Boolean = True
-    Public CONFIG_RESUMEN_X_ARTICULOS As Boolean = True
+    Public CONFIG_RESUMEN_X_ARTICULOS As Boolean = False
 
     Public IGV As Double
     Public TURNO As Integer
     Public CFG_FPAGO As String
     Public CFG_MONVENTA As String
+
+    Public COD_FACT As String
+    Public COD_BOL As String
 
     Public CONFIG_TURNO As Integer
 
@@ -127,6 +130,8 @@ Module Module1
             CFG_FPAGO = OREADER("FORMA_PAGO_CONTADO")
             CFG_MONVENTA = OREADER("MON_VENTA")
             CONFIG_TURNO = OREADER("CONFIG_TURNOS")
+            COD_FACT = OREADER("COD_DOC_FACTURA")
+            COD_BOL = OREADER("COD_DOC_BOLETA")
 
         End While
         OREADER.Close()

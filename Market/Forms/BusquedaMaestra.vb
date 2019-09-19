@@ -122,6 +122,8 @@ Public Class BusquedaMaestra
                     PROC = "LISTAR_COMITE_DETALLE"
                 Case "Mant_Rubro"
                     PROC = "LISTAR_RUBROS"
+                Case "MContingencia"
+                    PROC = "LISTAR_MOTIVOS_CONTINGENCIA"
             End Select
             Dim da As New SqlClient.SqlDataAdapter(PROC, CN_NET)
             da.SelectCommand.CommandType = CommandType.StoredProcedure

@@ -162,7 +162,7 @@ Public Class ClsVenta
     ByVal IGV_VENTA As Double, ByVal VUELTO_VENTA As Double, ByVal PAGOS_VENTA As Double, ByVal PAGOD_VENTA As Double, ByVal COD_CLIENTE As String,
     ByVal CIERREX As Integer, ByVal CIERREZ As Integer, ByVal COD_USER As String, ByVal NROPTOVTA As String, ByVal TURNO As Integer,
     ByVal CORR As Double, ByVal COD_TARJETA As String, ByVal MON_TARJETA As String, ByVal NRO_TARJETA As String, ByVal MONTO_TARJETA As Double,
-                          DSCTO_VENTA As Double) As Integer
+                          DSCTO_VENTA As Double, GRATUITA_VENTA As Integer, MONTO_GRATUITA_VENTA As Double) As Integer
         Try
             Dim CNN As SqlClient.SqlConnection
             Dim CMN As New SqlClient.SqlCommand
@@ -223,6 +223,11 @@ Public Class ClsVenta
 
             CMN.Parameters.Add("@DSCTO_VENTA", SqlDbType.Float)
             CMN.Parameters("@DSCTO_VENTA").Value = DSCTO_VENTA
+
+            CMN.Parameters.Add("@GRATUITA_VENTA", SqlDbType.Bit)
+            CMN.Parameters("@GRATUITA_VENTA").Value = GRATUITA_VENTA
+            CMN.Parameters.Add("@MONTO_GRATUITA_VENTA", SqlDbType.Float)
+            CMN.Parameters("@MONTO_GRATUITA_VENTA").Value = MONTO_GRATUITA_VENTA
 
             CMN.Parameters.Add("@SW", SqlDbType.Int)
             CMN.Parameters("@SW").Direction = ParameterDirection.Output

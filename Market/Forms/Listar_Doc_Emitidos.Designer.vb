@@ -40,10 +40,11 @@ Partial Class Listar_Doc_Emitidos
         Me.OPT_LIQ = New System.Windows.Forms.RadioButton()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.OPT_ARTICULOS = New System.Windows.Forms.RadioButton()
         Me.OPT_FACTURAS = New System.Windows.Forms.RadioButton()
         Me.C1_DOC = New C1.Win.C1FlexGrid.C1FlexGrid()
         Me.C1_DETALLE = New C1.Win.C1FlexGrid.C1FlexGrid()
-        Me.OPT_ARTICULOS = New System.Windows.Forms.RadioButton()
+        Me.OPT_OTROS = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -109,7 +110,7 @@ Partial Class Listar_Doc_Emitidos
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.Market.My.Resources.Resources.Imprimir
-        Me.Button1.Location = New System.Drawing.Point(962, 20)
+        Me.Button1.Location = New System.Drawing.Point(1016, 20)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(54, 43)
         Me.Button1.TabIndex = 38
@@ -124,7 +125,7 @@ Partial Class Listar_Doc_Emitidos
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.Market.My.Resources.Resources.ANULAR_L
-        Me.Button2.Location = New System.Drawing.Point(913, 20)
+        Me.Button2.Location = New System.Drawing.Point(967, 20)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(43, 43)
         Me.Button2.TabIndex = 37
@@ -167,7 +168,7 @@ Partial Class Listar_Doc_Emitidos
         'OPT_TARJETA
         '
         Me.OPT_TARJETA.AutoSize = True
-        Me.OPT_TARJETA.Location = New System.Drawing.Point(649, 21)
+        Me.OPT_TARJETA.Location = New System.Drawing.Point(635, 21)
         Me.OPT_TARJETA.Name = "OPT_TARJETA"
         Me.OPT_TARJETA.Size = New System.Drawing.Size(96, 26)
         Me.OPT_TARJETA.TabIndex = 6
@@ -190,11 +191,12 @@ Partial Class Listar_Doc_Emitidos
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel2.Location = New System.Drawing.Point(0, 639)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1028, 36)
+        Me.Panel2.Size = New System.Drawing.Size(1081, 36)
         Me.Panel2.TabIndex = 40
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.OPT_OTROS)
         Me.GroupBox1.Controls.Add(Me.OPT_ARTICULOS)
         Me.GroupBox1.Controls.Add(Me.OPT_TARJETA)
         Me.GroupBox1.Controls.Add(Me.OPT_LIQ)
@@ -205,9 +207,19 @@ Partial Class Listar_Doc_Emitidos
         Me.GroupBox1.Font = New System.Drawing.Font("Times New Roman", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(895, 57)
+        Me.GroupBox1.Size = New System.Drawing.Size(949, 57)
         Me.GroupBox1.TabIndex = 35
         Me.GroupBox1.TabStop = False
+        '
+        'OPT_ARTICULOS
+        '
+        Me.OPT_ARTICULOS.AutoSize = True
+        Me.OPT_ARTICULOS.Location = New System.Drawing.Point(749, 21)
+        Me.OPT_ARTICULOS.Name = "OPT_ARTICULOS"
+        Me.OPT_ARTICULOS.Size = New System.Drawing.Size(102, 26)
+        Me.OPT_ARTICULOS.TabIndex = 7
+        Me.OPT_ARTICULOS.Text = "Articulos"
+        Me.OPT_ARTICULOS.UseVisualStyleBackColor = True
         '
         'OPT_FACTURAS
         '
@@ -234,7 +246,7 @@ Partial Class Listar_Doc_Emitidos
         Me.C1_DOC.Rows.DefaultSize = 23
         Me.C1_DOC.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row
         Me.C1_DOC.ShowSortPosition = C1.Win.C1FlexGrid.ShowSortPositionEnum.None
-        Me.C1_DOC.Size = New System.Drawing.Size(1004, 558)
+        Me.C1_DOC.Size = New System.Drawing.Size(1057, 558)
         Me.C1_DOC.StyleInfo = resources.GetString("C1_DOC.StyleInfo")
         Me.C1_DOC.TabIndex = 39
         '
@@ -253,26 +265,26 @@ Partial Class Listar_Doc_Emitidos
         Me.C1_DETALLE.Name = "C1_DETALLE"
         Me.C1_DETALLE.Rows.DefaultSize = 23
         Me.C1_DETALLE.SelectionMode = C1.Win.C1FlexGrid.SelectionModeEnum.Row
-        Me.C1_DETALLE.Size = New System.Drawing.Size(1006, 559)
+        Me.C1_DETALLE.Size = New System.Drawing.Size(1059, 559)
         Me.C1_DETALLE.StyleInfo = resources.GetString("C1_DETALLE.StyleInfo")
         Me.C1_DETALLE.TabIndex = 36
         '
-        'OPT_ARTICULOS
+        'OPT_OTROS
         '
-        Me.OPT_ARTICULOS.AutoSize = True
-        Me.OPT_ARTICULOS.Location = New System.Drawing.Point(774, 21)
-        Me.OPT_ARTICULOS.Name = "OPT_ARTICULOS"
-        Me.OPT_ARTICULOS.Size = New System.Drawing.Size(102, 26)
-        Me.OPT_ARTICULOS.TabIndex = 7
-        Me.OPT_ARTICULOS.Text = "Articulos"
-        Me.OPT_ARTICULOS.UseVisualStyleBackColor = True
+        Me.OPT_OTROS.AutoSize = True
+        Me.OPT_OTROS.Location = New System.Drawing.Point(868, 21)
+        Me.OPT_OTROS.Name = "OPT_OTROS"
+        Me.OPT_OTROS.Size = New System.Drawing.Size(75, 26)
+        Me.OPT_OTROS.TabIndex = 8
+        Me.OPT_OTROS.Text = "Otros"
+        Me.OPT_OTROS.UseVisualStyleBackColor = True
         '
         'Listar_Doc_Emitidos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1028, 675)
+        Me.ClientSize = New System.Drawing.Size(1081, 675)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Panel2)
@@ -311,4 +323,5 @@ Partial Class Listar_Doc_Emitidos
     Friend WithEvents C1_DOC As C1.Win.C1FlexGrid.C1FlexGrid
     Friend WithEvents C1_DETALLE As C1.Win.C1FlexGrid.C1FlexGrid
     Friend WithEvents OPT_ARTICULOS As RadioButton
+    Friend WithEvents OPT_OTROS As RadioButton
 End Class

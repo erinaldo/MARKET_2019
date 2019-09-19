@@ -484,7 +484,7 @@ ACA:
                 ''    .BUSCAR_DATOS_VENTA(OBJCONN.Conexion(CAD_CON))
                 ''End With
                 'IMPRIMIR
-                IMPRIMIR(TIPODOC, 0, ESTADO, ID, NULO(OFILA.Item("DESC_CLIENTE"), "S"), NULO(OFILA.Item("RUC_CLIENTE"), "S"), NULO(OFILA.Item("DIR_CLIENTE"), "S"), OFILA.Item("DSCTO_VENTA"), OFILA.Item("SUBTOT_VENTA"), OFILA.Item("IGV_VENTA"), OFILA.Item("TOTAL_VENTA"), GDatFechaActual, Date.Now, COD_HASH)
+                IMPRIMIR(TIPODOC, 0, ESTADO, ID, NULO(OFILA.Item("DESC_CLIENTE"), "S"), NULO(OFILA.Item("RUC_CLIENTE"), "S"), NULO(OFILA.Item("DIR_CLIENTE"), "S"), OFILA.Item("DSCTO_VENTA"), OFILA.Item("SUBTOT_VENTA"), OFILA.Item("IGV_VENTA"), OFILA.Item("TOTAL_VENTA"), GDatFechaActual, Date.Now, COD_HASH, OFILA.Item("GRATUITA_VENTA"))
 
                 ''Call FactImprimir_Ticket(ESTADO, OBJFUNC.GFormatodeNumero(OFILA.Item("ACAMVTAS"), CFG_DRESULT),
                 ''                                             DOCU, OBJFUNC.GMascaraDoc(OFILA.Item("AVTANUME")),

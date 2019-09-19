@@ -1,0 +1,2 @@
+GRATUITA_VENTA	bit	Checked
+MONTO_GRATUITO_VENTA	numeric(12, 4)	Checked

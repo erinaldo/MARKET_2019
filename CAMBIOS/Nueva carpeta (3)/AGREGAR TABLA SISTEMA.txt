@@ -1,0 +1,6 @@
+92	Permisos Consultar Contingencias	-
+9201	Nuevo Documento	-
+9202	Generar Txt Electronica	-
+9203	Modificar Documento	-
+9204	Anular Documento	-
+9205	Iniciar Envio	-

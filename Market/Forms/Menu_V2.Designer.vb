@@ -70,7 +70,7 @@ Partial Class Menu_V2
         Me.C1OutPage_Ventas = New C1.Win.C1Command.C1OutPage()
         Me.C1_Consultar_Ventas = New C1.Win.C1Input.C1Button()
         Me.C1_Ventas_Ventas = New C1.Win.C1Input.C1Button()
-        Me.C1Button_Ventas_Ventas = New C1.Win.C1Input.C1Button()
+        Me.C1Button_Ventas_Contingencia = New C1.Win.C1Input.C1Button()
         Me.C1OutPage_Ctas_Ctes = New C1.Win.C1Command.C1OutPage()
         Me.C1Button_Compras_Pagos = New C1.Win.C1Input.C1Button()
         Me.C1Button_CtaCte_Ctas_Pagar = New C1.Win.C1Input.C1Button()
@@ -153,7 +153,7 @@ Partial Class Menu_V2
         Me.C1OutPage_Ventas.SuspendLayout()
         CType(Me.C1_Consultar_Ventas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1_Ventas_Ventas, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.C1Button_Ventas_Ventas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1Button_Ventas_Contingencia, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.C1OutPage_Ctas_Ctes.SuspendLayout()
         CType(Me.C1Button_Compras_Pagos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C1Button_CtaCte_Ctas_Pagar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -248,7 +248,7 @@ Partial Class Menu_V2
         Me.C1OutBar1.Font = New System.Drawing.Font("Times New Roman", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.C1OutBar1.Location = New System.Drawing.Point(3, 3)
         Me.C1OutBar1.Name = "C1OutBar1"
-        Me.C1OutBar1.SelectedIndex = 5
+        Me.C1OutBar1.SelectedIndex = 3
         Me.C1OutBar1.Size = New System.Drawing.Size(901, 591)
         Me.C1OutBar1.VisualStyle = C1.Win.C1Command.VisualStyle.Office2010Silver
         Me.C1OutBar1.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2010Silver
@@ -730,7 +730,7 @@ Partial Class Menu_V2
         '
         Me.C1OutPage_Ventas.Controls.Add(Me.C1_Consultar_Ventas)
         Me.C1OutPage_Ventas.Controls.Add(Me.C1_Ventas_Ventas)
-        Me.C1OutPage_Ventas.Controls.Add(Me.C1Button_Ventas_Ventas)
+        Me.C1OutPage_Ventas.Controls.Add(Me.C1Button_Ventas_Contingencia)
         Me.C1OutPage_Ventas.Name = "C1OutPage_Ventas"
         Me.C1OutPage_Ventas.Size = New System.Drawing.Size(901, 295)
         Me.C1OutPage_Ventas.Text = "Ventas"
@@ -759,18 +759,17 @@ Partial Class Menu_V2
         Me.C1_Ventas_Ventas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.C1_Ventas_Ventas.UseVisualStyleBackColor = True
         '
-        'C1Button_Ventas_Ventas
+        'C1Button_Ventas_Contingencia
         '
-        Me.C1Button_Ventas_Ventas.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C1Button_Ventas_Ventas.Image = Global.Market.My.Resources.Resources.Copia_de_Trophy
-        Me.C1Button_Ventas_Ventas.Location = New System.Drawing.Point(61, 101)
-        Me.C1Button_Ventas_Ventas.Name = "C1Button_Ventas_Ventas"
-        Me.C1Button_Ventas_Ventas.Size = New System.Drawing.Size(133, 40)
-        Me.C1Button_Ventas_Ventas.TabIndex = 3
-        Me.C1Button_Ventas_Ventas.Text = "Ventas"
-        Me.C1Button_Ventas_Ventas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.C1Button_Ventas_Ventas.UseVisualStyleBackColor = True
-        Me.C1Button_Ventas_Ventas.Visible = False
+        Me.C1Button_Ventas_Contingencia.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.C1Button_Ventas_Contingencia.Image = Global.Market.My.Resources.Resources.config_sistema
+        Me.C1Button_Ventas_Contingencia.Location = New System.Drawing.Point(61, 101)
+        Me.C1Button_Ventas_Contingencia.Name = "C1Button_Ventas_Contingencia"
+        Me.C1Button_Ventas_Contingencia.Size = New System.Drawing.Size(146, 40)
+        Me.C1Button_Ventas_Contingencia.TabIndex = 3
+        Me.C1Button_Ventas_Contingencia.Text = "Ventas Contingencia"
+        Me.C1Button_Ventas_Contingencia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.C1Button_Ventas_Contingencia.UseVisualStyleBackColor = True
         '
         'C1OutPage_Ctas_Ctes
         '
@@ -1255,7 +1254,7 @@ Partial Class Menu_V2
         Me.C1OutPage_Ventas.ResumeLayout(False)
         CType(Me.C1_Consultar_Ventas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1_Ventas_Ventas, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C1Button_Ventas_Ventas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1Button_Ventas_Contingencia, System.ComponentModel.ISupportInitialize).EndInit()
         Me.C1OutPage_Ctas_Ctes.ResumeLayout(False)
         CType(Me.C1Button_Compras_Pagos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C1Button_CtaCte_Ctas_Pagar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1335,7 +1334,7 @@ Partial Class Menu_V2
     Friend WithEvents C1Button_Caja_Caja As C1.Win.C1Input.C1Button
     Friend WithEvents C1Button_Caja_Reporte_Caja As C1.Win.C1Input.C1Button
     Friend WithEvents C1Button_Caja_Capital As C1.Win.C1Input.C1Button
-    Friend WithEvents C1Button_Ventas_Ventas As C1.Win.C1Input.C1Button
+    Friend WithEvents C1Button_Ventas_Contingencia As C1.Win.C1Input.C1Button
     Friend WithEvents C1Button_CtaCte_Cobranza_Cliente As C1.Win.C1Input.C1Button
     Friend WithEvents C1Button_CtaCte_Cobranza_Masiva_Cliente As C1.Win.C1Input.C1Button
     Friend WithEvents C1Button_CtaCte_Ctas_Pagar As C1.Win.C1Input.C1Button

@@ -87,6 +87,8 @@ Partial Class Ventas_V2
         Me.C1Button1 = New C1.Win.C1Input.C1Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.PrintDocument_FACT_BOL = New System.Drawing.Printing.PrintDocument()
+        Me.CHK_GRATUITA = New System.Windows.Forms.CheckBox()
+        Me.LBL_GRATUITO = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -810,6 +812,7 @@ Partial Class Ventas_V2
         Me.C1Button1.Name = "C1Button1"
         Me.C1Button1.Size = New System.Drawing.Size(61, 63)
         Me.C1Button1.TabIndex = 50
+        Me.C1Button1.Text = "Ñ"
         Me.C1Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.ToolTip1.SetToolTip(Me.C1Button1, "Descuento")
         Me.C1Button1.UseVisualStyleBackColor = True
@@ -819,12 +822,36 @@ Partial Class Ventas_V2
         'PrintDocument_FACT_BOL
         '
         '
+        'CHK_GRATUITA
+        '
+        Me.CHK_GRATUITA.AutoSize = True
+        Me.CHK_GRATUITA.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CHK_GRATUITA.ForeColor = System.Drawing.Color.DarkRed
+        Me.CHK_GRATUITA.Location = New System.Drawing.Point(98, 118)
+        Me.CHK_GRATUITA.Name = "CHK_GRATUITA"
+        Me.CHK_GRATUITA.Size = New System.Drawing.Size(180, 23)
+        Me.CHK_GRATUITA.TabIndex = 51
+        Me.CHK_GRATUITA.Text = "Transferencia Gratuita"
+        Me.CHK_GRATUITA.UseVisualStyleBackColor = True
+        '
+        'LBL_GRATUITO
+        '
+        Me.LBL_GRATUITO.AutoSize = True
+        Me.LBL_GRATUITO.Location = New System.Drawing.Point(749, 498)
+        Me.LBL_GRATUITO.Name = "LBL_GRATUITO"
+        Me.LBL_GRATUITO.Size = New System.Drawing.Size(130, 13)
+        Me.LBL_GRATUITO.TabIndex = 52
+        Me.LBL_GRATUITO.Text = "LBL_GRATUITO_VENTA"
+        Me.LBL_GRATUITO.Visible = False
+        '
         'Ventas_V2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(818, 722)
+        Me.Controls.Add(Me.LBL_GRATUITO)
+        Me.Controls.Add(Me.CHK_GRATUITA)
         Me.Controls.Add(Me.C1Button1)
         Me.Controls.Add(Me.Button_CAJA)
         Me.Controls.Add(Me.Button3)
@@ -944,4 +971,6 @@ Partial Class Ventas_V2
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents C1Button1 As C1.Win.C1Input.C1Button
     Friend WithEvents PrintDocument_FACT_BOL As Printing.PrintDocument
+    Friend WithEvents CHK_GRATUITA As CheckBox
+    Friend WithEvents LBL_GRATUITO As Label
 End Class

@@ -19,7 +19,7 @@
     Public Sub IMPRIMIR(COD_DOC As String, REIMPRIME As Integer, STRESTADO As String, NRODOC As String,
                         CLIENTE_DESC As String, CLIENTE_RUC As String, CLIENTE_DIRECCION As String,
                         DESCUENTO As String, SUBTOTAL As String, IGV As String, TOTAL As String, FECHA_DOC As Date, HORA As DateTime,
-                        COD_HASH As String)
+                        COD_HASH As String, Optional GRATUITA As Boolean = False)
         Dim OBJPTOVTA As New ClsPtoVta
         Try
             'Dim Fuente As New System.Drawing.Font("Arial", 8)
@@ -386,6 +386,12 @@
             RSPAGO.Close()
             CN_NET.Close()
 
+            If GRATUITA = True Then
+                file.WriteLine("")
+                Dim STRGRATIS As String
+                STRGRATIS = Alineacion("C", IntAnchoTicket - 3, Len("TRANSFERENCIA A TITULO GRATUITO"), "TRANSFERENCIA A TITULO GRATUITO")
+                file.WriteLine(STRGRATIS)
+            End If
             ''HASH
             If SISTEMA_ASPNET = "S" Or SISTEMA_ITALO = "S" Then
                 Dim StrHASH As String

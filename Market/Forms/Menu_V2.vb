@@ -62,9 +62,10 @@
         C1Button_ComiteDetalle.Enabled = False
 
         C1OutPage_Ventas.Enabled = False
-        C1Button_Ventas_Ventas.Enabled = False
+        C1Button_Ventas_Contingencia.Enabled = False
         C1_Ventas_Ventas.Enabled = False
         C1_Consultar_Ventas.Enabled = False
+        C1Button_Ventas_Contingencia.Enabled = False
 
         C1OutPage_Ctas_Ctes.Enabled = False
         C1Button_CtaCte_Cobranza_Cliente.Enabled = False
@@ -213,8 +214,9 @@
         Rpte_Caja.Show()
     End Sub
 
-    Private Sub C1Button_Ventas_Click(sender As Object, e As EventArgs) Handles C1Button_Ventas_Ventas.Click
-        Ventas.Show()
+    Private Sub C1Button_Ventas_Click(sender As Object, e As EventArgs) Handles C1Button_Ventas_Contingencia.Click
+        'Ventas_Contingencia.Show()
+        Consultar_Contingencias.Show()
     End Sub
 
     Private Sub C1Button_Cobranza_Cliente_Click(sender As Object, e As EventArgs) Handles C1Button_CtaCte_Cobranza_Cliente.Click
@@ -411,6 +413,8 @@
                         C1_Ventas_Ventas.Enabled = True
                     Case "0302"
                         C1_Consultar_Ventas.Enabled = True
+                    Case "0303"
+                        C1Button_Ventas_Contingencia.Enabled = True
                     Case "04"
                         C1OutPage_Ctas_Ctes.Enabled = True
                     Case "040101"

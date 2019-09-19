@@ -578,7 +578,7 @@ Module ModFunciones
         End If
     End Sub
 
-    Sub LISTAR_TIPO_DOC(ByVal COMBO As ComboBox, ByVal TIPO As String)
+    Sub LISTAR_TIPO_DOC(ByVal COMBO As Object, ByVal TIPO As String)
         Dim Adapter As New SqlClient.SqlDataAdapter("EXEC LISTAR_TIPO_DOC '" & TIPO & "'", CN_NET)
         Dim table As New DataTable
         Adapter.Fill(table)
